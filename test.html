@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+  <link rel="stylesheet" href="css/bootstrap-responsive.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <title>The Daily</title>
+</head>
+<body>
+  <script id="entry-template" type="text/template">
+    <div class="entry">
+      <p class="author">By: {{ author }}</p>
+      <p class="title">Title: {{ title }}</p>
+      <p class="date">Date: {{ publishedDate }}</p>
+      <p class="contents">{{ contents }}</p>
+    </div>
+  </script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="js/json2.js"></script>
+  <script type="text/javascript" src="js/ICanHaz.js"></script>
+  <script type="text/javascript" src="js/underscore.js"></script>
+  <script type="text/javascript" src="js/backbone.js"></script>
+  <script type="text/javascript" src="js/backbone.localStorage.js"></script>
+  <script type="text/javascript" src="js/models/entry.js"></script>
+  <script type="text/javascript" src="js/collections/entries.js"></script>
+  <script type="text/javascript" src="js/views/entry.js"></script>
+  <script type="text/javascript" src="js/views/app.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+  <h1>I am so incentivized right now</h1>
+  <div id="daily">
+    <form id="addEntry" action="#">
+      <label for="title">Title </label><input id="title" type = "text" />
+      <label for="author">Author </label><input id="author" type = "text" />
+      <button id="create">Create</button>
+    </form>
+    <button id="deleteAll">Delete All</button>
+    <div id="entries">
+    </div>
+  </div>
+</body> 
+</html>
