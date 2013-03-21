@@ -38,6 +38,7 @@ app.AppView = Backbone.View.extend({
     e.preventDefault();
 
     app.Entries.each(function(entry) {
+      console.log(entry);
       entry.destroy();
     }, this);
 

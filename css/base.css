@@ -2,15 +2,51 @@ body {
   margin: 0;
   padding: 0;
   background-color: #eee;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 12px;
+}
+
+h1 {
+  text-align: center;
+}
+
+#entries-container {
+  float: left;
+  display: block;
+  margin-left: 10px;
 }
 
 .entry {
-  margin: 5px;
+  margin-top: 10px;
   border: 1px solid #999;
   width: 300px;
   padding: 5px;
+  background-color: #fff;
+}
+
+#contents-container {
+  float: right;
+  margin: 10px;
+}
+
+#edit, #save {
+  float: right;
+}
+
+#contents-box {
+  margin-bottom: 5px;
+}
+
+.contents {
+  padding: 5px;
+  width: 500px;
+  height: 500px;
+  border: 1px solid #999;
+}
+
+.contents-edit {
+  background-color: #ddd;
+}
+
+.contents-show {
   background-color: #fff;
 }
 
