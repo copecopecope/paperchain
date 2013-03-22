@@ -1,29 +1,56 @@
+@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans);
+@import url(http://fonts.googleapis.com/css?family=Fjalla+One);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700);
+@import url(http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic);
+
 body {
   margin: 0;
   padding: 0;
   background: url('/img/ricepaper2.png');
+  font-family: 'PT Sans', sans-serif;
+  font-size: 14px;
+  overflow-x: hidden;
+}
+
+button, input {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 14px;
 }
 
 h1 {
+  font-family: 'Fjalla One', sans-serif;
+  text-shadow: 1px 1px #fff;
+  color: #f15a29;
   text-align: center;
 }
 
 #entries-container {
-  float: left;
-  display: block;
-  margin-left: 10px;
+}
+
+#addEntry input {
+  width: 80%;
 }
 
 .entry {
   margin-top: 10px;
   border: 1px solid #999;
-  width: 300px;
   padding: 5px;
   background-color: #fff;
 }
 
+.entry .info {
+  width: 70%;
+  display: inline-block;
+}
+
+.entry .delete-container {
+  float: right;
+  padding: 3px 3px 0 0;
+}
+
 .selectedEntry {
-  color: red;
+  color: #f15a29;
+  font-weight:700;
 }
 
 .clear {
@@ -32,8 +59,8 @@ h1 {
 
 #contents-container {
   float: right;
-  margin: 10px;
-  width: 600px;
+  color: #555;
+  margin-top: 10px;
 }
 
 #edit, #save {
@@ -45,7 +72,7 @@ h1 {
 }
 
 .contents {
-  padding: 5px;
+  padding: 30px 20px 10px 20px;
   height: 500px;
   border: 1px solid #999;
   overflow: scroll;
@@ -55,10 +82,83 @@ h1 {
 #contents-edit {
   background-color: #fff;
   width: 100%;
+  color: #555;
 }
 
 #contents-show {
+  background-color: #fff;
   background: url('/img/lined_paper.png');
+  font-family: 'Libre Baskerville', serif;
+  font-size: 12px;
 }
 
+/* STATS */
+
+#stats {
+  margin: 30px 0;
+}
+
+#stats-info {
+  margin: 0 auto !important;
+  float: none !important;
+  width: 295px;
+}
+
+#totalwordcount, #pagesinbook {
+  display: inline-block;
+  margin: 0; 
+  padding: 0;
+  height:60px;
+  vertical-align: top;
+}
+
+#totalwordcount {
+ padding-right: 15px;
+  border-right: 2px solid #999;
+}
+
+#pagesinbook {
+  padding-left: 15px;
+}
+
+#stats-info .title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+#stats-info .stat {
+  font-size: 40px;
+  font-weight: 700;
+  text-align: center;
+}
+
+#totalwordcount .title {
+  margin-bottom: 20px;
+}
+
+#pagesinbook .title {
+  margin-top: 15px;
+}
+
+#pagesinbook img {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 30%;
+}
+
+#pagesinbook .stat {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 70%;
+  text-align: center;
+  height: 30px;
+}
+
+/* MEDIA */
+
+@media (max-width: 480px) { 
+  .contents {
+    height: 270px;
+  }
+}
 

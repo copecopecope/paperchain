@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/bootstrap_journal.css" />
   <link rel="stylesheet" href="css/bootstrap-responsive.css" />
   <link rel="stylesheet" href="css/base.css" />
-  <title>Daily</title>
+  <title>Paperchains</title>
 </head>
 
 <body>
@@ -21,10 +21,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">Daily</a>
+          <a class="brand" href="#">Paperchains</a>
           <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
-              Logged in as <a href="#" class="navbar-link">Username</a>
+              Logged in as <a href="#" class="navbar-link">John Smith</a>
             </p>
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
@@ -38,10 +38,13 @@
    
   <script id="entry-template" type="text/template">
     <div class="entry">
-      <!-- <p class="author">By: <%- author %></p> -->
-      <p class="title">Title: <%- title %></p>
-      <p class="date">Date: <%- publishedDate %></p>
-      <a id="delete" href="#"><i class="icon-remove"></i></a>
+      <div class="info">
+        <p class="title">Title: <%- title %></p>
+        <p class="date">Date: <%- publishedDate %></p>
+      </div>
+      <div class="delete-container">
+        <a id="delete" href="#"><i class="icon-remove"></i></a>
+      </div>
     </div>
   </script>
 
@@ -59,9 +62,14 @@
     <button id="save">Save</button>
   </script>
 
-  <script id="stats-template" type="text/template">.
-    <span id="total-word-count">Total word count: <%= totalwordcount %></span>
-    <span id="pages-in-book">Pages in book: <%= pagesinbook %></span>
+  <script id="stats-template" type="text/template">
+    <div id="stats-info">
+      <div id="totalwordcount">
+        <div class="title">WORD COUNT</div><div class="stat"><%= totalwordcount %></div>
+      </div><div id="pagesinbook">
+        <img src="/img/book.png" /><div class="stat"><%= pagesinbook %></div><div class="title">PAGES IN BOOK</div></div>
+      </div>
+    </div>
   </script>
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -81,21 +89,23 @@
   <script type="text/javascript" src="js/views/app.js"></script>
   <script type="text/javascript" src="js/app.js"></script>
 
-  <h1>PaperChains</h1>
-
-  <div id="daily">
-    <div id="entries-container">
-      <form id="addEntry" action="#">
-        <!-- <label for="title">Title </label> --><input id="title" placeholder="Title" type = "text" /><br />
-        <!-- <label for="author">Author </label><input id="author" type = "text" /><br /> -->
-        <button id="create">Create</button>
-        <button id="deleteAll">Delete All</button>
-      </form>
-      <div id="entries">
-      </div>
+  <div id="daily" class="container-fluid">
+    <div class="row-fluid" id="header">
+      <h1>Paperchains</h1>
     </div>
-    <div id="contents-container"></div>
-    <div class="clear"></div>
+    <div class="row-fluid">
+      <div id="entries-container" class="span3">
+        <form id="addEntry" action="#">
+          <!-- <label for="title">Title </label> --><input id="title" placeholder="Title" type = "text" /><br />
+          <!-- <label for="author">Author </label><input id="author" type = "text" /><br /> -->
+          <button id="create">Create</button>
+          <button id="deleteAll">Delete All</button>
+          <button id="loadSample">Load Demo</button>
+        </form>
+        <div id="entries"></div>
+      </div>
+      <div id="contents-container" class="span9"></div>
+    </div>
     <div id="stats"></div>
   </div>
 

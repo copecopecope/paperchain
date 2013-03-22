@@ -3,8 +3,8 @@ var app = app || {};
 app.AppView = Backbone.View.extend({
   el: '#daily',
 
-  initialize: function() {
-    //this.collection = new app.Entries( initialEntries );
+  initialize: function( demoEntries) {
+    this.demoEntries = demoEntries;
 
     this.contentsView = new app.ContentsView({ entry: null, editable: false });
     this.contentsView.render();
@@ -22,8 +22,8 @@ app.AppView = Backbone.View.extend({
 
   events: {
     'click #create':'createEntry',
-    'click #deleteAll':'deleteAll'
-    //'click #loadSample':'loadSample'
+    'click #deleteAll':'deleteAll',
+    'click #loadSample':'loadSample'
   },
 
   createEntry: function(e) {
@@ -45,14 +45,21 @@ app.AppView = Backbone.View.extend({
   deleteAll: function(e) {
     e.preventDefault();
 
-    app.Entries.each(function(entry) {
-      entry.destroy();
-    }, this);
+    while(app.Entries.models.length > 0) {
+      app.Entries.models[0].destroy();
+    }
+    // app.Entries.each(function(entry) {
+    //   entry.destroy();
+    // }, this);
 
   },
 
   loadSample: function(e) {
-
+    this.deleteAll(e);
+    _.each(this.demoEntries, function(entryData) {
+      console.log(entryData);
+      app.Entries.create(entryData);
+    });
   },
 
   calculateWordCount: function() {

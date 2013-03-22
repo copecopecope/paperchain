@@ -9,6 +9,7 @@ app.ContentsView = Backbone.View.extend({
   events: {
     "click #edit" : "editContents",
     "click #save" : "saveContents",
+    'dblclick #contents-show' : 'editContents',
   },
 
   initialize: function () {
