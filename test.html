@@ -3,10 +3,12 @@
 <head>
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
   <meta name="viewport" content="width=device-width initial-scale=1.0">
+  <link rel="stylesheet" href="css/bootstrap-wysihtml5-0.0.2.css" />
   <link rel="stylesheet" href="css/bootstrap.css" />
+  <link rel="stylesheet" href="css/bootstrap_journal.css" />
   <link rel="stylesheet" href="css/bootstrap-responsive.css" />
   <link rel="stylesheet" href="css/base.css" />
-  <title>The Daily</title>
+  <title>Daily</title>
 </head>
 
 <body>
@@ -19,7 +21,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">Project name</a>
+          <a class="brand" href="#">Daily</a>
           <div class="nav-collapse collapse">
             <p class="navbar-text pull-right">
               Logged in as <a href="#" class="navbar-link">Username</a>
@@ -36,30 +38,39 @@
    
   <script id="entry-template" type="text/template">
     <div class="entry">
-      <p class="author">By: <%- author %></p>
+      <!-- <p class="author">By: <%- author %></p> -->
       <p class="title">Title: <%- title %></p>
       <p class="date">Date: <%- publishedDate %></p>
+      <a id="delete" href="#"><i class="icon-remove"></i></a>
     </div>
   </script>
 
   <script id="contents-show-template" type="text/template">
-    <div class="contents contents-show">
-      <p><%- contents %></p>
+    <div class="title"><%- title %></div>
+    <div id="contents-show" class="contents">
+      <p><%= contents %></p>
     </div>
     <button id="edit">Edit</button>
   </script>
 
   <script id="contents-edit-template" type="text/template">
-    <textarea class="contents contents-edit"><%- contents %></textarea>
+    <div class="title"><%- title %></div>
+    <textarea id="contents-edit" class="contents"><%- contents %></textarea>
     <button id="save">Save</button>
+  </script>
+
+  <script id="stats-template" type="text/template">.
+    <span id="total-word-count">Total word count: <%= totalwordcount %></span>
+    <span id="pages-in-book">Pages in book: <%= pagesinbook %></span>
   </script>
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
   <script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
   <script type="text/javascript" src="js/jquery-wordcounter.js"></script>
+  <script type="text/javascript" src="js/wysihtml5-0.3.0.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="js/bootstrap-wysihtml5-0.0.2.js"></script>
   <script type="text/javascript" src="js/json2.js"></script>
-  <!-- <script type="text/javascript" src="js/ICanHaz.js"></script> -->
   <script type="text/javascript" src="js/underscore.js"></script>
   <script type="text/javascript" src="js/backbone.js"></script>
   <script type="text/javascript" src="js/backbone.localStorage.js"></script>
@@ -70,21 +81,22 @@
   <script type="text/javascript" src="js/views/app.js"></script>
   <script type="text/javascript" src="js/app.js"></script>
 
-  <h1>One-A-Day for Men</h1>
+  <h1>PaperChains</h1>
 
   <div id="daily">
     <div id="entries-container">
       <form id="addEntry" action="#">
-        <label for="title">Title </label><input id="title" type = "text" /><br />
-        <label for="author">Author </label><input id="author" type = "text" /><br />
+        <!-- <label for="title">Title </label> --><input id="title" placeholder="Title" type = "text" /><br />
+        <!-- <label for="author">Author </label><input id="author" type = "text" /><br /> -->
         <button id="create">Create</button>
         <button id="deleteAll">Delete All</button>
       </form>
       <div id="entries">
+      </div>
     </div>
-    </div>
-    <div id="contents-container">
-    </div>
+    <div id="contents-container"></div>
+    <div class="clear"></div>
+    <div id="stats"></div>
   </div>
 
 </body> 

@@ -5,6 +5,11 @@ app.AppView = Backbone.View.extend({
 
   initialize: function() {
     //this.collection = new app.Entries( initialEntries );
+
+    this.contentsView = new app.ContentsView({ entry: null, editable: false });
+    this.contentsView.render();
+
+    this.$stats = this.$('#stats');
     
     this.listenTo(app.Entries, 'add', this.addOneToView);
     this.listenTo(app.Entries, 'reset', this.addAllToView);
@@ -13,9 +18,12 @@ app.AppView = Backbone.View.extend({
     app.Entries.fetch();
   },
 
+  stats_template: _.template( $('#stats-template').html() ),
+
   events: {
     'click #create':'createEntry',
     'click #deleteAll':'deleteAll'
+    //'click #loadSample':'loadSample'
   },
 
   createEntry: function(e) {
@@ -38,13 +46,42 @@ app.AppView = Backbone.View.extend({
     e.preventDefault();
 
     app.Entries.each(function(entry) {
-      console.log(entry);
       entry.destroy();
     }, this);
 
   },
 
+  loadSample: function(e) {
+
+  },
+
+  calculateWordCount: function() {
+    var totalwordcount = 0;
+    var pagesinbook = 0;
+    app.Entries.each( function(entry) {
+      var wordcount = entry.getWordCount();
+      totalwordcount += wordcount;
+      pagesinbook += Math.ceil(wordcount/250);
+    }, this);
+    return [totalwordcount, pagesinbook];
+  },
+
   render: function() {
+    var wordcalc = this.calculateWordCount();
+    var totalwordcount = wordcalc[0];
+    var pagesinbook = wordcalc[1];
+
+    if (app.Entries.length) {
+      this.$stats.show();
+
+      this.$stats.html(this.stats_template({
+        totalwordcount: totalwordcount,
+        pagesinbook: pagesinbook,
+      }));
+    } else {
+      this.$stats.hide();
+    }
+
   },
 
   addOneToView: function(entry) {

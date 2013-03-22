@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #eee;
+  background: url('/img/ricepaper2.png');
 }
 
 h1 {
@@ -22,9 +22,18 @@ h1 {
   background-color: #fff;
 }
 
+.selectedEntry {
+  color: red;
+}
+
+.clear {
+  clear: both;
+}
+
 #contents-container {
   float: right;
   margin: 10px;
+  width: 600px;
 }
 
 #edit, #save {
@@ -37,17 +46,19 @@ h1 {
 
 .contents {
   padding: 5px;
-  width: 500px;
   height: 500px;
   border: 1px solid #999;
+  overflow: scroll;
+  
 }
 
-.contents-edit {
-  background-color: #ddd;
-}
-
-.contents-show {
+#contents-edit {
   background-color: #fff;
+  width: 100%;
+}
+
+#contents-show {
+  background: url('/img/lined_paper.png');
 }
 
 
