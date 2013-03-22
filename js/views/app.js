@@ -19,6 +19,7 @@ app.AppView = Backbone.View.extend({
   },
 
   stats_template: _.template( $('#stats-template').html() ),
+  chain_template: _.template( $('#chain-template').html() ),
 
   events: {
     'click #create':'createEntry',
@@ -39,7 +40,12 @@ app.AppView = Backbone.View.extend({
 
     formData['publishedDate'] = $.datepicker.formatDate('D M d', new Date());
 
-    app.Entries.create(formData);
+    var newEntry = app.Entries.create(formData);
+
+    newEntry.trigger('viewing', newEntry);
+    newEntry.trigger('select');
+    this.contentsView.saveContents();
+    this.contentsView.editContents();
   },
 
   deleteAll: function(e) {
@@ -48,9 +54,9 @@ app.AppView = Backbone.View.extend({
     while(app.Entries.models.length > 0) {
       app.Entries.models[0].destroy();
     }
-    // app.Entries.each(function(entry) {
-    //   entry.destroy();
-    // }, this);
+
+  // app.Entries.each(function(entry) {
+
 
   },
 
@@ -87,6 +93,11 @@ app.AppView = Backbone.View.extend({
       }));
     } else {
       this.$stats.hide();
+    }
+
+    $('#chains').html('');
+    for (var i = 0; i < app.Entries.length; i++) {
+      $('#chains').append(this.chain_template());
     }
 
   },

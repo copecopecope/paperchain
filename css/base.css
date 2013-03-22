@@ -17,11 +17,26 @@ button, input {
   font-size: 14px;
 }
 
-h1 {
-  font-family: 'Fjalla One', sans-serif;
-  text-shadow: 1px 1px #fff;
-  color: #f15a29;
+img .logo {
   text-align: center;
+}
+
+#header {
+  margin-top: -20px;
+  margin-bottom: 10px;
+}
+
+#chains {
+  margin: 0 auto;
+}
+
+.chain {
+  margin: 0 auto;
+  display: inline-block;
+  margin-left: -4px;
+  width: 40px;
+  height: 20px;
+  background: url('/img/chain.png');
 }
 
 #entries-container {
@@ -41,6 +56,10 @@ h1 {
 .entry .info {
   width: 70%;
   display: inline-block;
+}
+
+.entry .label {
+  background-color: #888;
 }
 
 .entry .delete-container {
@@ -154,11 +173,45 @@ h1 {
   height: 30px;
 }
 
+/* SPLASH */
+
+.splash {
+  background: url('/img/paperchain_light.jpg') no-repeat right top;
+  font-family: 'Libre Baskerville', serif;
+}
+
+.main {
+  margin: 60px 0;
+  text-align: center;
+}
+
+.main img {
+  margin-bottom: 30px;
+}
+
+.main iframe {
+  border: 3px solid #555;
+  width: 560px;
+  height: 315px;
+}
+
+.main .btn {
+  padding: 14px 24px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+
+
 /* MEDIA */
 
 @media (max-width: 480px) { 
   .contents {
     height: 270px;
+  }
+
+  .main iframe {
+    width: 320px;
   }
 }
 
